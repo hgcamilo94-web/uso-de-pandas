@@ -40,3 +40,62 @@ print("=======MODIFICACIÓN DE DATAFRAME========")
 resumen["Correo"] = ["test@cesde.net", "correo@prueba.com",None,None] #Agrega una nueva columna "Correo" al DataFrame con los valores proporcionados
 print(resumen)
 print(df)
+
+print("=========================================================================")
+
+data = pd.read_csv("MOCK_DATA.csv")
+print("===HEAD===")
+print(data.head())
+print("==TAIL===")
+print(data.tail())
+print("==INFO===")
+print(data.info())
+data["Precio_Total"] = data["Cantidad"] * data["Precio_Unitario"]
+print(data["Precio_Total"])
+promedio_total = data["Precio_Total"].mean()
+suma_total = data["Precio_Total"].sum()
+
+print(f"El promedio es , {promedio_total}:.2f")
+print(f"El suma de precios es , {suma_total}:.2f")
+
+print("=========================================================================")
+
+data1 = pd.read_csv("MOCK_DATA_1.csv")
+print("===HEAD===")
+print(data1.head())
+print("==TAIL===")
+print(data1.tail())
+print("==INFO===")
+print(data1.info())
+data1["Precio_Total"] = data1["Cantidad"] * data1["Precio_Unitario"]
+print(data1["Precio_Total"])
+promedio_total = data1["Precio_Total"].mean()
+suma_total = data1["Precio_Total"].sum()
+print("=========================================================================")
+print(f"El promedio es , {promedio_total}:.2f")
+print(f"El suma de precios es , {suma_total}:.2f")
+print(data1.isna())
+cant_nulos = data1.isna().sum()
+print(cant_nulos)
+duplicate_cant = data1.duplicated().sum()
+print(duplicate_cant)
+print("=========================================================================")
+otra_variable = data1.dropna()
+print(otra_variable.info())
+print(otra_variable)
+print("=========================================================================")
+nueva_varibale = data1 
+data1['Vendedor'] = data1['Vendedor'].fillna('n/a')
+print(data1['Vendedor'])
+print("=========================================================================")
+nueva_varibale = data1 
+data1['Ciudad'] = data1['Ciudad'].fillna('n/a')
+print(data1['Ciudad'])
+print("=========================================================================")
+
+filtro_ciudades = data1[data1["Ciudad"] == "Río Alejandro"]
+
+print(filtro_ciudades)
+print("=========================================================================")
+data1['Producto'] = data1['Producto'].str.upper()
+print(data1['Producto'])
